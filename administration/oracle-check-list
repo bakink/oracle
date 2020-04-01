@@ -1,0 +1,29 @@
+--http://www.farukcevik.com.tr/orcle-database-kontrol-listesi-check-list/
+
+Alert.log kontrolü. (Günlük)
+Backup ların Kontrolü. (Günlük)
+Unusable Index var mı? (Günlük)
+Sql ler kontrol edilir, Top Sql lerin kontrolü. (Günlük)
+Yetkisiz Erişim ve hatalı Erişim Kontrolü. (Günlük)
+Active ve Inactive Session sayılarının kontrolü. (Günlük)
+Lock Tablo ve session kontrolü. (Günlük)
+Tablespace lerin kontrolü. (Günlük)
+Asm disk ve db size kontrolü. (Günlük)
+Export ve Import varsa kontrolü. (Günlük)
+DDS Sistemi varsa ETL lerin kontrolü. (Günlük)
+Enterprice Manager varsa Performans takibi yapılması ve metriklerin kontrolü. (Günlük)
+AWR ve ADDM raporlarının alınması. (Haftalık veya ihtiyaç halinde)
+Schema veya İstatisitklerin kontrolü (?).
+Partition Kontrolü (?).
+Veritabanı tablo ve Indexlerin boyutlarının kontrolü. (Haftalık ve Aylık)
+Fragmente Olmuş tabloların kontrolü. (Haftalık veya Aylık)
+Geçiçi tabloların kontrolü (Haftalık veya Aylık).
+Haftalık veya aylık veritabanı büyümesi kontrolü.
+DB Time Kontrolü ve DB time en yüksek olduğu zaman aralığında AWR ve ADDM lerin alınarak incelenmesi. (Haftalık Veya ihtiyaç halinde)
+Backupların Test Veritabanında Restare edilerek test yapılması (Aylık)
+DB Server Kontrolü (CPU, IO, Swap, Memory, Disk, Network vs..).(Haftalık veya Aylık)
+ORAchk – Healt Check Raporları (RAC ise RACchk, Exadata ise Exachk) ile genel DB kontrolü.
+OS Watcher ile db server kaynak kullanımı kontrolü.
+TFA (Oracle Trace File Analyzer)
+Eger açılmış ise açılan SR ların kontrolü.
+Yapılan kontrol listesinin güncellenmesi ve kontrolü.

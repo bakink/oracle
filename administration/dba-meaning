@@ -1,0 +1,30 @@
+--https://thedbadmin.com/dba-meaning/
+
+What Database Administrator DBA do?
+Database Software Installation
+Database Creation for users or Application
+Database User, collection and schema creation
+Database Object creation
+Database user, privilege and role management
+Database and Operating system Space management
+Database Backup and recovery
+Database Patching
+Database Cloning from production to development, QA or staging environments
+Database Performance Tuning (PT)
+Database Replication
+Database Clustering
+Database High Availability system setup and maintenance
+Database Auditing or preparatory auditing like SOX
+Database version upgrade
+Database Platform migration like from windows to Linux
+Database Storage migration
+Database Business Continuity plan (BCP)
+Database Migration from Data Center to another data center
+Database Migration from the local data center to Cloud like AWS, GCP or Azure
+Database Migration from one database type to another like an oracle to PostgreSQL
+Database Incident and Problem management
+Database Change and Code migration
+Supporting Developers, Testers or Business analyst, Data scientist, Data engineer from the data point of view
+Providing 24/7 Support and Monitoring for Database availability
+
+Database software, Application Proof of concepts. (POC)

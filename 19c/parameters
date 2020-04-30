@@ -1,0 +1,5 @@
+--Performance Issues when using PDBs with Oracle RAC 19c and 18c (Doc ID 2644243.1)
+--How To Disable SQL Plan Directive (SPD) (Doc ID 2209560.1)
+--Init.ora Parameter "DEFERRED_SEGMENT_CREATION" Reference Note (Doc ID 1216282.1) (false a cek)
+--High Version Counts For SQL Statements (>1024) Post Upgrade To 12.2 and Above Causing Database Slow Performance (Doc ID 2431353.1)
+--https://mikedietrichde.com/2019/06/03/automatic-sql-plan-management-in-oracle-database-19c/

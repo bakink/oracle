@@ -1,0 +1,9 @@
+--https://grepora.com/2020/04/29/alternate-archive-log-destination-configuration-that-can-help-you-at-least-it-helped-me/
+
+alter system set log_archive_dest_1='location=use_db_recovery_file_dest noreopen alternate=log_archive_dest_2' scope=both sid'*';
+alter system set log_archive_dest_2='+NEW_FLASH´ sid='*';
+alter system set log_archive_dest_state_2= 'ALTERNATE' scope=both sid='*';
+
+On the database, you can see the status of the archive destinations:
+
+select dest_id, dest_name, status from v$archive_dest_status where status <> 'INACTIVE';

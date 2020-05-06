@@ -27,3 +27,84 @@ OS Watcher ile db server kaynak kullanımı kontrolü.
 TFA (Oracle Trace File Analyzer)
 Eger açılmış ise açılan SR ların kontrolü.
 Yapılan kontrol listesinin güncellenmesi ve kontrolü.
+
+--https://www.ktexperts.com/oracle-dba-checklisttasks/
+
+Oracle DBA Checklist/Tasks
+Posted on December 17, 2016 in Oracle DB Admin
+Share via:
+FacebookTwitterLinkedInWhatsAppShare
+ Post Views: 3,384
+1) Proper Documentation which is very important in order to save time and act on issue immediately.
+2) DB health check list for Day to Day Activities.
+
+–> Check Alert log
+–> Tablespaces
+–> Archivelog cleanup script
+–> Check OS Watchers scripts are running or not.
+–> Setup cronjob for sending email alert for blocking sessions
+–> Email alert for Alert log/Listener log monitoring.
+–> ASM Disk space
+–> Check Datafiles autoextend off or on.
+–> Restore points information (Drop Restore points if not needed)
+–> Make sure No Application User connections to Prod database.(Any SQL tools)
+–> Table statistics (Missing or stale) & Dictionary Statistics
+–> Fix Invalid objects if needed drop them after checking with application team.
+–> Fix unusable indexes.
+–> Make sure No Non SYS Objects in SYSTEM and SYSAUX tablespaces
+–> Try to have Primary key on tables.
+–> Ensure that all indexes use an index tablespace.
+–> Look for objects that break rules (Naming convention/Storage parameters)
+–> Keep checking User Account Status (Lock or Expired or Expiring).
+–> Check with application team whether Disabled constraint required or not.
+–> Make sure standby DB’s are in sync with Primary.
+–> Keep monitoring Redo Log generation/Archive log generation (Always maintain 3-4 Days archives on source)
+–> Always keep checking Top Segments and if needed implement partitioning.
+–> Keep checking Indexes size and if needed rebuild the indexes.
+–> Monitor Schema Growth or DB growth which is required for capacity planning. (If needed store this information in tables)
+–> Keep track of recent issues and if needed work with Support till issue is fixed.
+–> Make sure no files are in recovery mode.
+–> Check how many indexes are created on same column?
+–> Keep checking tables/indexes with high degree of parallelism. (Do proper analysis before enabling parallelism)
+–> Defragment tables which are fragmented.
+–> Keep track of High Undo Usage Queries.
+–> Make sure RMAN Backups completed successfully.
+–> Always keep track of TOP SQL’s(Top Physical Read/Logical Reads/Gets/Elapsed Time)
+–> Modify Inittrans for tables/Indexes as per requirement(Do proper analysis before doing this)
+–> Keep track of No.of Indexes created on a table and do proper analysis is it required to have so many indexes on table or not.
+
+3) Maintain proper wiki pages for your upcoming tasks, So that you will not miss any task.(Always set reminders)
+4) Always try to monitor database jobs using scripts (where it will send emails to you)
+5) Filesystem clean up scripts.
+6) Always keep access to metalink.
+7) Always keep track of PSU patches/OS Patches. (Do Proper testing with good documentation before applying patches or doing OS Changes in production)
+8) Keep track of database options which are enabled.
+9) Analyze ADDM/ASH/AWR Reports for resizing SGA/PGA.
+10) Do proper redolog files sizing.
+11) Always take backup of existing pfile/listener/tnsnames files before doing any changes in production.
+12) Monitor crontab changes and if needed keep alert for changes.
+13) Modify snapshot intervals for new databases.(Most of times we need to increase retention for AWR and make sure enough space is allocated for SYSAUX TS’s)
+14) If RMAN backup timings are modified then make sure to put it back.(If needed put reminder)
+15) Daily meet application team for 10 min and discuss any pending items. (Stand up meeting)
+–> What did you accomplish yesterday?
+–> What are you working on today?
+–> Are there any blockers or risks?
+16) Archive the alert logs (if possible) to reference the similar kind of error in future.
+17) Always save important phone numbers of Third Party Vendors.
+18) If you are implementing referential integrity, are all core FK’s indexed?
+19) Do proper sizing for OS mount points (for Oracle Home/Grid Home)
+20) Always keep important scripts handy. Add OEM links to your favorites.
+–> Blocking sessions
+–> rowlocks
+–> Undo Usage
+–> Temp Usage
+–> Kill scripts (Before killing any session check with your lead)
+–> Services relocation scripts
+–> Queries related to dba_hist_active_sess_history views
+–> Standby lag queries
+–> ASM space Queries
+–> scripts finding SQL details using Unix PID.
+–> Longops querys.
+–> Checking IO usage queries.
+
+21) In Dataguard setup Before adding space to tablespace in production make sure you have sufficient free space in Standby DB ASM mount point or OS mount point.

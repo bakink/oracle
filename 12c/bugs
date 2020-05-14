@@ -1,2 +1,2 @@
 --https://www.anbob.com/archives/5309.html
-
+--Bug 30265523 - blocks are not marked as free in assm after delete - 12.2 and later (Doc ID 30265523.8)

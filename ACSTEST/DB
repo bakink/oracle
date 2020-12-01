@@ -1,0 +1,73 @@
+Merhaba Baki Hocam,
+ 
+ Ekte kullandığım scriptleri gönderiyorum. Bunlardan önce io_test tablespace'ini yaratmak gerekiyor. Ve bu tablespace'e 32GB büyüklüğünde 1500 tane datafile yaratmak gerekiyordu. Daha sonra io_test kullanıcısını yaratmak gerekiyor. Sonra ekteki scriptleri kullanarak tablo ve indeksler yaratılıyordu. Ekteki scriptler 100 tane tablo için sizde galiba 400 tane tablo yaratmıştık. Tabloları ve indeksleri yarattıktan sonra istatistiklerini toplamayı unutmayın.  Aşağıda ek olarak temp, undo ve init.ora ile ilgili detaylar var.
+ 
+ İnşallah işe yazdıklarım işe yarar.
+ 
+ İyi çalışmalar,
+ Yüksel
+ 
+ create tablespace io_test datafile '+DATA' size 32G;
+ alter tablespace io_test add datafile '+DATA' size 32G;
+ ...
+ 
+ 
+ create user io_test identified by io_test default tablespace io_test temporary tablespace temp;
+ grant connect, resource to io_test;
+ alter user io_test quota unlimited on io_test;
+ alter user io_test quota unlimited on io_test2;
+ grant dba to io_test;
+ 
+ alter database tempfile '....' resize 32000M;
+ alter tablespace temp add tempfile '....' size 32000M;
+ 
+ alter database datafile 'undo1...' resize 16000M;
+ alter database datafile 'undo2...' resize 16000M;
+ 
+ 
+ -- orjinal prosedür
+ create or replace procedure io_test.io_test( t_name varchar2 ) is
+    a_val number;
+    cnt   number;
+    thread_number number;
+ begin
+    thread_number := to_number(t_name);
+    a_val := trunc(dbms_random.value(1, 419429400));
+    execute immediate 'select count(d) from t' ||t_name || ' where a=:a_val' into cnt using a_val;
+    execute immediate 'select count(*) from t' ||t_name || ' where b=mod(:a_val, 50000)' into cnt using a_val;
+    execute immediate 'update t' || t_name || ' set c=sysdate where a between :a_val+500 and :a_val+1000' using a_val, a_val;
+    execute immediate 'update t' || t_name || ' set c=sysdate where a between :a_val+1500 and :a_val+2000' using a_val, a_val;
+    commit;
+    if( thread_number<=2 or (thread_number>=51 and thread_number<=52)) then
+      execute immediate 'select /*+ full(t) */ count(*) from t' || t_name || ' t where rownum<21942940' into cnt;
+    end if;
+ end;
+ /
+ 
+ 
+ -- init.ora parametreleri
+ 
+ *._optimizer_mjc_enabled=FALSE
+ *.audit_file_dest='/oracle/app/admin/IOTST/adump'
+ *.audit_trail='db'
+ *.compatible='11.2.0.4.0'
+ *.control_files='+DATA2/iotst/controlfile/current.447.1040649139'
+ *.db_block_size=8192
+ *.db_cache_size=8933867520
+ *.db_create_file_dest='+DATA2'
+ *.db_domain=''
+ *.db_files=1600
+ *.db_name='IOTST'
+ *.diagnostic_dest='/oracle/app'
+ *.dispatchers='(PROTOCOL=TCP) (SERVICE=IOTSTXDB)'
+ *.java_pool_size=209715200
+ *.large_pool_size=1092616192
+ *.open_cursors=300
+ *.pga_aggregate_target=10633609216
+ *.processes=1500
+ *.remote_login_passwordfile='EXCLUSIVE'
+ *.sessions=1655
+ *.shared_pool_size=4026531840
+ *.undo_tablespace='UNDOTBS1'
+ 
+ 
